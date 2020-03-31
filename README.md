@@ -1,7 +1,15 @@
-forgottenserver [![Build Status](https://travis-ci.org/otland/forgottenserver.svg?branch=master)](https://travis-ci.org/otland/forgottenserver "Travis CI status") [![Build status](https://ci.appveyor.com/api/projects/status/599x38f3a0luessl?svg=true)](https://ci.appveyor.com/project/otland/forgottenserver "Download builds for Windows") [![Docker status](https://images.microbadger.com/badges/image/otland/forgottenserver.svg)](https://microbadger.com/images/otland/forgottenserver "Docker image status")
-===============
+forgottenserver with [OTClientV8](https://github.com/OTCv8/otclientv8) features
+===
 
-The Forgotten Server is a free and open-source MMORPG server emulator written in C++. It is a fork of the [OpenTibia Server](https://github.com/opentibia/server) project. To connect to the server, you can use [OTClient](https://github.com/edubart/otclient) or [OpenTibiaUnity](https://github.com/slavidodo/OpenTibia-Unity).
+### Forum: https://otland.net/forums/otclient.494/
+### Discord: https://discord.gg/t4ntS5p
+
+### Commits
+1. Fork of https://github.com/otland/forgottenserver from 01.04.2020
+2. OTClientV8 detection, extended opcodes, json lib, bigger packet size and bug fixes for xtea padding and stacked creatures
+You must enable GameExtendedOpcode in modules/game_features/features.lua
+
+---
 
 ### Getting Started
 

@@ -244,6 +244,7 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage& msg)
 
 	OperatingSystem_t operatingSystem = static_cast<OperatingSystem_t>(msg.get<uint16_t>());
 	version = msg.get<uint16_t>();
+	otclientV8 = operatingSystem >= CLIENTOS_OTCLIENTV8_LINUX;
 
 	msg.skipBytes(7); // U32 client version, U8 client type, U16 dat revision
 
@@ -528,7 +529,7 @@ void ProtocolGame::GetTileDescription(const Tile* tile, NetworkMessage& msg)
 			msg.addItem(*it);
 
 			count++;
-			if (count == 9 && tile->getPosition() == player->getPosition()) {
+			if (!otclientV8 && count == 9 && tile->getPosition() == player->getPosition()) {
 				break;
 			} else if (count == 10) {
 				return;
@@ -544,7 +545,7 @@ void ProtocolGame::GetTileDescription(const Tile* tile, NetworkMessage& msg)
 				continue;
 			}
 
-			if (tile->getPosition() == player->getPosition() && count == 9 && !playerAdded) {
+			if (!otclientV8 && tile->getPosition() == player->getPosition() && count == 9 && !playerAdded) {
 				creature = player;
 			}
 
