@@ -120,8 +120,14 @@ class NetworkMessage
 			return info.length;
 		}
 
-		void setLength(MsgSize_t newLength) {
+		void setLength(MsgSize_t newLength)
+		{
 			info.length = newLength;
+		}
+
+		void setPosition(MsgSize_t newPos)
+		{
+			info.position = newPos;
 		}
 
 		MsgSize_t getBufferPosition() const {

@@ -1,4 +1,4 @@
-forgottenserver with [OTClientV8](https://github.com/OTCv8/otclientv8) features
+forgottenserver with [OTClientV8 >=2.2](https://github.com/OTCv8/otclientv8) features
 ===
 
 ### Forum: https://otland.net/forums/otclient.494/
@@ -7,8 +7,9 @@ forgottenserver with [OTClientV8](https://github.com/OTCv8/otclientv8) features
 ### Commits
 1. Fork of https://github.com/otland/forgottenserver from 01.04.2020
 2. OTClientV8 detection, extended opcodes, json lib, bigger packet size and bug fixes for xtea padding and stacked creatures
-You must enable GameExtendedOpcode in modules/game_features/features.lua
-
+You must enable `GameExtendedOpcode` in `modules/game_features/features.lua`
+3. Packet compressions - allows to reduce network usage by 90%, helps to reduce ping (requires changes from 2nd commit)
+You must enable `GamePacketCompression` feature
 ---
 
 ### Getting Started
