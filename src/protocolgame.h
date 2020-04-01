@@ -245,6 +245,7 @@ class ProtocolGame final : public Protocol
 
 		//tiles
 		void sendMapDescription(const Position& pos);
+		void sendFloorDescription(const Position& pos, int floor);
 
 		void sendAddTileItem(const Position& pos, uint32_t stackpos, const Item* item);
 		void sendUpdateTileItem(const Position& pos, uint32_t stackpos, const Item* item);
@@ -302,6 +303,11 @@ class ProtocolGame final : public Protocol
 		//otclient
 		void parseExtendedOpcode(NetworkMessage& msg);
 
+		//otcv8
+		void parseChangeAwareRange(NetworkMessage& msg);
+		void updateAwareRange(int width, int height);
+		void sendAwareRange();
+
 		friend class Player;
 
 		// Helpers so we don't need to bind every time
@@ -327,6 +333,18 @@ class ProtocolGame final : public Protocol
 		bool debugAssertSent = false;
 		bool acceptPackets = false;
 		bool otclientV8 = false;
+
+		struct AwareRange {
+			int width = 17; // don't change it
+			int height = 13; // don't change it
+
+			int left() const { return width / 2; }
+			int right() const { return 1 + width / 2; }
+			int top() const { return height / 2; }
+			int bottom() const { return 1 + height / 2; }
+			int horizontal() const { return width + 1; }
+			int vertical() const { return height + 1; }
+		} awareRange;
 };
 
 #endif
